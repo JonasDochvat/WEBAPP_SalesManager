@@ -1,0 +1,20 @@
+# Ambientes Virtuais e Dependências
+venv/
+node_modules/
+
+# Arquivos de Configuração Locais
+.env
+*.log
+*.sqlite3
+
+# Cache e Compilações
+__pycache__/
+*.pyc
+*.pyo
+
+# Configurações de IDEs
+.vscode/
+.idea/
+
+# Banco de Dados Temporários
+db.sqlite3

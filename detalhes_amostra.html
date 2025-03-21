@@ -1,0 +1,39 @@
+<!-- detalhes_amostra.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes das Amostra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    
+    <ul>
+      <li>
+        <h1>Detalhes das Amostras</h1>
+        <h3><em>PRODUTO</em></h3>
+        <span><em>CÓDIGO</em> </span>
+        <span> <em>ID</em> </span>
+        <span> 
+          <div class="ago"><em>NRO</em> </div>
+          <div class="time"><em>DATA</em> </div>
+        </span>
+      </li>
+
+        {% set primeira_linha = true %}
+          {% for amostra in amostras %}
+            <li>
+                  <h3>{{ amostra['descricao'] }}</h3>
+                  <span>{{ amostra['codigo'] }}</span>
+                  <span> {{ amostra['id'] }}</span>
+                  <span> {{ amostra['nro'] }}
+                    <div class="ago">{{ amostra['nro'] }}</div>
+                    <div class="time">{{ amostra['entrada'] }}</div>
+                  </span>
+
+            </li>
+          {% endfor %}
+    </ul>
+</body>
+</html>
