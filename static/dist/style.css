@@ -673,13 +673,13 @@ li {
   display: flex;
   justify-content: flex-start; /* Alinha à esquerda, mas você pode ajustar conforme necessário */
   align-items: center; /* Alinha os itens verticalmente */
-  padding: 0.5rem; /* Espaçamento interno para os itens */
+  padding: 0.3rem; /* Espaçamento interno para os itens */
   flex-wrap: wrap; /* Permite que os itens quebrem para a linha abaixo se não couberem */
 }
 
 span {
   font-size: 15px;
-  margin-left: 1rem; /* Menor margem para garantir que não sobreponha */
+  margin-left: 0.5rem; /* Menor margem para garantir que não sobreponha */
 }
 
 .ProductName, .CompanyName {
@@ -689,14 +689,14 @@ span {
   text-overflow: ellipsis; /* Adiciona '...' quando o texto é muito longo */
 }
 
-.Quantity, .UnitPrice, .OrderId {
-  flex: 0 1 50px; /* Essas colunas são mais finas, com largura mínima de 40px */
+.Quantity,  .OrderId {
+  flex: 0 1 55px; /* Essas colunas são mais finas, com largura mínima de 0px */
   white-space: nowrap; /* Impede que o texto quebre para a linha */
   overflow: hidden; /* Impede que o conteúdo extra saia da caixa */
   text-overflow: ellipsis; /* Adiciona '...' quando o texto é muito longo */
 }
 
-.OrderDate, .ShipCity {
+.OrderDate, .ShipCity, .UnitPrice {
   flex: 1 1 100px; /* Essas colunas têm uma largura mínima maior */
   margin-left: auto; /* Alinha esses itens à direita */
 }

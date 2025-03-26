@@ -312,19 +312,19 @@ Your browser does not support the video tag.
      <!-- NESSA UL SERÃO INSERIDOS OS DADOS DOS PRODUTOS COLETADOS NA PLANILHA p.product_name, od.quantity, od.unit_price, -->
      <ul id="item-list">
       {% for venda in vendas %}
-          <li class="Orders" data-id="{{ venda['order_id'] }}" data-company-name="{{ venda['company_name'] }}" data-product-name="{{ venda['product_name'] }}" data-quantity="{{ venda['quantity'] }}" data-unit-price="{{ venda['unit_price'] }}"  data-orderdate="{{ venda['order_date'] }}" data-shipcity="{{ venda['ship_city'] }}" onclick="sendItemId(this)">
+          <li class="Orders" data-id="{{ venda['sod.salesorderid'] }}" data-company-name="{{ venda['buyer_name'] }}" data-product-name="{{ venda['p.name'] }}" data-quantity="{{ venda['sod.orderqty'] }}" data-unit-price="{{ venda['sod.unitprice'] }}"  data-orderdate="{{ venda['soh.orderdate'] }}" data-shipcity="{{ venda['soh.territoryid'] }}" onclick="sendItemId(this)">
               <div class="OrderId">
-                  <span>{{ venda['order_id']  }}</span>
+                  <span>{{ venda['salesorderid']  }}</span>
               </div>
               <span class="ProductName">
                   <span class="status-circle green"></span>
-                  {{ venda['product_name'] }}
+                  {{ venda['name'] }}
               </span>
-              <span class="CompanyName">{{ venda['company_name'] }}</span>
-              <span class="Quantity">{{ venda['quantity'] }}</span>
-              <span class="UnitPrice">{{ venda['unit_price'] }}</span>
-              <span class="OrderDate">{{ venda['order_date'] }}</span>
-              <span class="ShipCity">{{ venda['ship_city'] }}</span>
+              <span class="CompanyName">{{ venda['buyer_name'] }}</span>
+              <span class="Quantity">{{ venda['orderqty'] }}</span>
+              <span class="UnitPrice">{{ venda['unitprice'] }}</span>
+              <span class="OrderDate">{{ venda['orderdate'] }}</span>
+              <span class="ShipCity">{{ venda['territoryid'] }}</span>
               <div class="button-wrapper">
                   <div class="menu">
                       <button class="dropdown">

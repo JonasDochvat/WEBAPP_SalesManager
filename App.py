@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route('/detalhes_venda')
 def detalhes_venda():
     vendas = carregar_vendas()
+    print(vendas)
     return render_template('index.html', vendas=vendas)
 
 @app.route('/adicionar_venda', methods=['POST'])

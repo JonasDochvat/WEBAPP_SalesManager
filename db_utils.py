@@ -6,11 +6,27 @@ def carregar_vendas():
     conn = conectar()
     cursor = conn.cursor(cursor_factory=RealDictCursor)
     
-    query = """SELECT o.order_id, c.company_name, p.product_name, od.quantity, od.unit_price,  o.ship_city, order_date
-        FROM order_details od
-        JOIN orders o ON od.order_id = o.order_id
-        JOIN customers c ON o.customer_id = c.customer_id
-        JOIN products p ON od.product_id = p.product_id;"""  # Seleciona todos os pedidos da tabela Orders
+    query = """SELECT 
+        sod.salesorderid, 
+        CASE
+            WHEN c.storeid IS NOT NULL THEN s.name  -- Quando for uma loja, usa o nome da loja
+            WHEN c.personid IS NOT NULL THEN CONCAT(pp.FirstName, ' ', pp.LastName)  -- Quando for uma pessoa, usa o nome da pessoa
+            ELSE 'Desconhecido' -- Caso não tenha storeid nem personid
+        END AS buyer_name,
+        soh.status,
+        p.name,
+        sod.orderqty, 
+        ROUND(sod.unitprice,2) AS unitprice,  
+        soh.territoryid, 
+        TO_CHAR(soh.orderdate, 'DD/MM/YYYY') AS orderdate
+    FROM sales.salesorderdetail sod
+    JOIN sales.salesorderheader soh ON sod.salesorderid = soh.salesorderid
+    JOIN sales.customer c ON soh.customerid = c.customerid
+    LEFT JOIN production.product p ON sod.productid = p.productid
+    LEFT JOIN sales.store s ON c.storeid = s.businessentityid
+    LEFT JOIN person.person pp ON c.personid = pp.businessentityid 
+    LIMIT 100;
+"""  # Seleciona todos os pedidos da tabela Orders
     cursor.execute(query)
     
     vendas = cursor.fetchall()  # Pega todos os resultados da query
