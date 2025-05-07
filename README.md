@@ -1,4 +1,4 @@
-# 🛒 Dashboard de Vendas - Northwind
+# 🛒 Dashboard de Vendas - AdventureWorks
 
 Este projeto é um Web App para visualizar dados de vendas da Northwind usando Flask e PostgreSQL.
 
